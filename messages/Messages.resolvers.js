@@ -1,8 +1,4 @@
 export default {
-    Query: {
-        seeRoom: () => true,
-    },
-
     Room: {
         users: ({ id }) => client.room.findUnique({ where: { id } }).users(), // 유저가 많아 질 경우에는 부적합한 방법이긴함
         messages: ({ id }) =>

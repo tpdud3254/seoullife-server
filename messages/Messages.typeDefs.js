@@ -1,9 +1,6 @@
 import { gql } from "apollo-server";
 
 export default gql`
-    type Query {
-        seeRoom: Boolean!
-    }
     type Message {
         id: Int!
         payload: String!
@@ -23,3 +20,11 @@ export default gql`
         unreadTotal: Int!
     }
 `;
+
+/*
+seeRoom
+seeRooms
+sendMessage
+readMessage
+roomUpdates
+*/
