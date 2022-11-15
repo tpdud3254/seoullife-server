@@ -1,4 +1,6 @@
 import client from "../../client";
+import { NEW_MESSAGE } from "../../constants";
+import pubsub from "../../pubsub";
 
 export default {
     Mutation: {
@@ -92,7 +94,7 @@ export default {
             }
 
             if (message) {
-                //pubsub
+                pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...message } });
 
                 return {
                     ok: true,
