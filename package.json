@@ -21,6 +21,7 @@
     "homepage": "https://github.com/tpdud3254/seoullife-server#readme",
     "dependencies": {
         "@apollo/server": "^4.1.1",
+        "@axelspringer/graphql-google-pubsub": "^2.1.0",
         "@graphql-tools/load-files": "^6.6.1",
         "@graphql-tools/merge": "^8.3.12",
         "@graphql-tools/schema": "^9.0.10",
