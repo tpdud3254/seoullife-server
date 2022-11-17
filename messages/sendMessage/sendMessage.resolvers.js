@@ -7,6 +7,7 @@ export default {
         sendMessage: async (__, { payload, roomId, userId, isAdmin }) => {
             let room = null;
             let message = null;
+            let userEmail = null;
 
             const adminUser = await client.user.findFirst({
                 where: {
@@ -15,6 +16,7 @@ export default {
             });
 
             if (isAdmin) {
+                userEmail = adminUser.email;
                 if (roomId) {
                     room = await client.room.findUnique({
                         where: {
@@ -44,6 +46,16 @@ export default {
                     },
                 });
             } else {
+                const user = await client.user.findUnique({
+                    where: {
+                        id: userId,
+                    },
+                });
+
+                if (user) {
+                    userEmail = user.email;
+                }
+
                 room = await client.room.findFirst({
                     where: {
                         users: {
@@ -99,6 +111,7 @@ export default {
                 return {
                     ok: true,
                     id: message.id,
+                    userEmail,
                 };
             }
 
